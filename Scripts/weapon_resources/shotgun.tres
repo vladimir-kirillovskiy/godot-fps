@@ -6,7 +6,7 @@
 script = ExtResource("1_3p1pp")
 weapon_name = "shotgun"
 activate_anim = "shotgun_activate"
-shot_anim = "shotgun_shoot"
+shoot_anim = "shotgun_shoot"
 reload_anim = "shotgun_reload"
 deactivate_anim = "shotgun_deactivate"
 ooa_anim = "shotgun_OOA"
@@ -15,3 +15,6 @@ reserve_ammo = 12
 magazine = 6
 max_ammo = 36
 auto_fire = false
+type = 1
+weapon_range = 2000
+damage = 1

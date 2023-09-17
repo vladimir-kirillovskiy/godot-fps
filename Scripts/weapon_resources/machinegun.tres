@@ -6,7 +6,7 @@
 script = ExtResource("1_thr5f")
 weapon_name = "machinegun"
 activate_anim = "machinegun_activate"
-shot_anim = "machinegun_shoot"
+shoot_anim = "machinegun_shoot"
 reload_anim = "machinegun_reload"
 deactivate_anim = "machinegun_deactivate"
 ooa_anim = "machinegun_OOA"
@@ -15,3 +15,6 @@ reserve_ammo = 60
 magazine = 30
 max_ammo = 120
 auto_fire = true
+type = 1
+weapon_range = 2000
+damage = 1

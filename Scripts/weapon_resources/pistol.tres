@@ -6,7 +6,7 @@
 script = ExtResource("1_uuo1p")
 weapon_name = "pistol"
 activate_anim = "pistol_activate"
-shot_anim = "pistol_shoot"
+shoot_anim = "pistol_shoot"
 reload_anim = "pistol_reload"
 deactivate_anim = "pistol_deactivate"
 ooa_anim = "pistol_OOA"
@@ -15,3 +15,6 @@ reserve_ammo = 10
 magazine = 10
 max_ammo = 30
 auto_fire = false
+type = 1
+weapon_range = 2000
+damage = 1
