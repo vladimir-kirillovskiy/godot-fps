@@ -18,7 +18,14 @@ class_name Weapon_Resource
 
 @export var auto_fire: bool
 
-
-@export_flags("HitScan", "Projectile") var type
 @export var weapon_range: int
 @export var damage: int
+
+@export_flags("HitScan", "Projectile") var type
+@export var projectile_to_load: PackedScene
+@export var projectile_velocity: int
+
+
+
+
+
