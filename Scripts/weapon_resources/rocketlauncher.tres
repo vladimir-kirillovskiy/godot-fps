@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=2 format=3 uid="uid://be1vyu7qf1v3q"]
+
+[ext_resource type="Script" path="res://Scripts/weapon_resource.gd" id="1_t0usq"]
+
+[resource]
+script = ExtResource("1_t0usq")
+weapon_name = "rocketlauncher"
+activate_anim = "rocketlauncher_activate"
+shoot_anim = "rocketlauncher_shoot"
+reload_anim = "rocketlauncher_reload"
+deactivate_anim = "rocketlauncher_deactivate"
+ooa_anim = "rocketlauncher_OOA"
+current_ammo = 1
+reserve_ammo = 5
+magazine = 1
+max_ammo = 5
+auto_fire = false
+type = 2
+weapon_range = 100
+damage = 1
