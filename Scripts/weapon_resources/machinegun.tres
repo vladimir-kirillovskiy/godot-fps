@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=2 format=3 uid="uid://bfhkmjjh58la"]
+
+[ext_resource type="Script" path="res://Scripts/weapon_resource.gd" id="1_thr5f"]
+
+[resource]
+script = ExtResource("1_thr5f")
+weapon_name = "machinegun"
+activate_anim = "machinegun_activate"
+shot_anim = "machinegun_shoot"
+reload_anim = "machinegun_reload"
+deactivate_anim = "machinegun_deactivate"
+ooa_anim = "machinegun_OOA"
+current_ammo = 30
+reserve_ammo = 60
+magazine = 30
+max_ammo = 120
+auto_fire = true

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=2 format=3 uid="uid://q5hk8cvetj6p"]
+
+[ext_resource type="Script" path="res://Scripts/weapon_resource.gd" id="1_3p1pp"]
+
+[resource]
+script = ExtResource("1_3p1pp")
+weapon_name = "shotgun"
+activate_anim = "shotgun_activate"
+shot_anim = "shotgun_shoot"
+reload_anim = "shotgun_reload"
+deactivate_anim = "shotgun_deactivate"
+ooa_anim = "shotgun_OOA"
+current_ammo = 6
+reserve_ammo = 12
+magazine = 6
+max_ammo = 36
+auto_fire = false

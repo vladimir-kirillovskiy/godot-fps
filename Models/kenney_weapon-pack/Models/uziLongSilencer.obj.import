@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://btutbjnq5lc7a"
+path="res://.godot/imported/uziLongSilencer.obj-a7a7edb649f2b284673f2eaee3b09e04.mesh"
+
+[deps]
+
+files=["res://.godot/imported/uziLongSilencer.obj-a7a7edb649f2b284673f2eaee3b09e04.mesh"]
+
+source_file="res://Models/kenney_weapon-pack/Models/uziLongSilencer.obj"
+dest_files=["res://.godot/imported/uziLongSilencer.obj-a7a7edb649f2b284673f2eaee3b09e04.mesh", "res://.godot/imported/uziLongSilencer.obj-a7a7edb649f2b284673f2eaee3b09e04.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

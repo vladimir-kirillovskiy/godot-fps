@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://buex6fqqhrb2e"
+path="res://.godot/imported/uziGoldLong.obj-c7112827b142effaf24e81aefb16aedd.mesh"
+
+[deps]
+
+files=["res://.godot/imported/uziGoldLong.obj-c7112827b142effaf24e81aefb16aedd.mesh"]
+
+source_file="res://Models/kenney_weapon-pack/Models/uziGoldLong.obj"
+dest_files=["res://.godot/imported/uziGoldLong.obj-c7112827b142effaf24e81aefb16aedd.mesh", "res://.godot/imported/uziGoldLong.obj-c7112827b142effaf24e81aefb16aedd.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
