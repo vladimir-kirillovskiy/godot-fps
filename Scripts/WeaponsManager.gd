@@ -154,13 +154,14 @@ func hit_scan_collision(collision_point):
 		var world = get_tree().get_root().get_child(0)
 		world.add_child(hit_indicator)
 		hit_indicator.global_translate(bullet_collision.position) 
-		hit_scan_damage(bullet_collision.collider)
+		hit_scan_damage(bullet_collision.collider, bullet_direction, bullet_collision.position)
 		
 		
 	
-func hit_scan_damage(collider):
+func hit_scan_damage(collider, direction, position):
 	if collider.is_in_group("Target") and collider.has_method("hit_succesful"):
-		collider.hit_succesful(current_weapon.damage)
+		collider.hit_succesful(current_weapon.damage, direction, position)
+		
 	
 	
 func launch_projectile(point: Vector3):

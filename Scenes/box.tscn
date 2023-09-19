@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://443nk3i622wl"]
 
-[ext_resource type="Script" path="res://physicsTarget.gd" id="1_xbhii"]
+[ext_resource type="Script" path="res://Scripts/physicsTarget.gd" id="1_xbhii"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_keaqt"]
 
