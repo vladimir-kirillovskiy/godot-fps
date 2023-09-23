@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkj0s5qgt32oq"]
+
+[ext_resource type="Script" path="res://Scripts/WeaponPickup.gd" id="1_ckb02"]
+[ext_resource type="ArrayMesh" uid="uid://dixh2it3trgpq" path="res://Models/kenney_weapon-pack/Models/ammo_pistol.obj" id="2_41slp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n0d4i"]
+size = Vector3(0.0588568, 0.0639883, 0.0880754)
+
+[node name="pistol_rounds" type="RigidBody3D"]
+collision_layer = 8
+collision_mask = 13
+script = ExtResource("1_ckb02")
+weapon_name = "pistol"
+current_ammo = 10
+reserve_ammo = 10
+pick_up_type = "ammo"
+
+[node name="AmmoPistol" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.0114324, 0, -0.0321929)
+cast_shadow = 0
+mesh = ExtResource("2_41slp")
+
+[node name="AmmoPistol2" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.0114324, 0, -0.0113561)
+cast_shadow = 0
+mesh = ExtResource("2_41slp")
+
+[node name="AmmoPistol3" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.0114324, 0, 0.00931003)
+cast_shadow = 0
+mesh = ExtResource("2_41slp")
+
+[node name="AmmoPistol4" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.0114324, 0, 0.0293946)
+cast_shadow = 0
+mesh = ExtResource("2_41slp")
+
+[node name="AmmoPistol5" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.00959666, 0, -0.0321929)
+cast_shadow = 0
+mesh = ExtResource("2_41slp")
+
+[node name="AmmoPistol6" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.00959666, 0, -0.0113561)
+cast_shadow = 0
+mesh = ExtResource("2_41slp")
+
+[node name="AmmoPistol7" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.00959666, 0, 0.00931003)
+cast_shadow = 0
+mesh = ExtResource("2_41slp")
+
+[node name="AmmoPistol8" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.00959666, 0, 0.0293946)
+cast_shadow = 0
+mesh = ExtResource("2_41slp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_n0d4i")

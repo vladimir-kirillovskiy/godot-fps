@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dyawb77nlxr0n"]
+[gd_scene load_steps=38 format=3 uid="uid://dyawb77nlxr0n"]
 
 [ext_resource type="Script" path="res://Scripts/CharacterController.gd" id="1_qbrtr"]
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="2_8s10j"]
@@ -11,6 +11,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cm0fnqrbqulen" path="res://Models/kenney_weapon-pack/Models/shotgun.obj" id="4_j6paf"]
 [ext_resource type="Resource" uid="uid://q5hk8cvetj6p" path="res://Scripts/weapon_resources/shotgun.tres" id="5_ti4rd"]
 [ext_resource type="Resource" uid="uid://be1vyu7qf1v3q" path="res://Scripts/weapon_resources/rocketlauncher.tres" id="8_465jw"]
+[ext_resource type="Script" path="res://Scripts/WeaponSway.gd" id="9_7qjq2"]
 [ext_resource type="ArrayMesh" uid="uid://cmgtek7er5tkg" path="res://Models/kenney_weapon-pack/Models/rocketlauncher.obj" id="11_xdcqc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ekvy0"]
@@ -920,6 +921,8 @@ _data = {
 "shotgun_shoot": SubResource("Animation_1e5bt")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_1ymus"]
+
 [node name="player" type="CharacterBody3D"]
 script = ExtResource("1_qbrtr")
 
@@ -982,6 +985,9 @@ _weapon_resources = Array[Resource("res://Scripts/weapon_resource.gd")]([ExtReso
 start_weapons = Array[String](["pistol", "rocketlauncher"])
 
 [node name="FPSRig" type="Node3D" parent="MainCamera/WeaponsManager"]
+script = ExtResource("9_7qjq2")
+sway_left = Vector3(0, 0.05, 0)
+sway_right = Vector3(0, -0.05, 0)
 
 [node name="Pistol" type="MeshInstance3D" parent="MainCamera/WeaponsManager/FPSRig"]
 transform = Transform3D(-3, 0, 7.60554e-06, 0, 3, 0, -7.60554e-06, 0, -3, 0, -1.50359, 0)
@@ -1015,7 +1021,16 @@ libraries = {
 [node name="BulletPoint" type="Marker3D" parent="MainCamera/WeaponsManager/FPSRig"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0762635, -0.0380857, -0.218263)
 
+[node name="PickUpDetection" type="Area3D" parent="."]
+transform = Transform3D(1.49046, 0, 0, 0, 1, 0, 0, 0, 1.49289, 0, 0.498538, 0)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickUpDetection"]
+shape = SubResource("BoxShape3D_1ymus")
+
 [connection signal="update_ammo" from="MainCamera/WeaponsManager" to="CanvasLayer" method="_on_weapons_manager_update_ammo"]
 [connection signal="update_weapon_stack" from="MainCamera/WeaponsManager" to="CanvasLayer" method="_on_weapons_manager_update_weapon_stack"]
 [connection signal="weapon_change" from="MainCamera/WeaponsManager" to="CanvasLayer" method="_on_weapons_manager_weapon_change"]
 [connection signal="animation_finished" from="MainCamera/WeaponsManager/FPSRig/AnimationPlayer" to="MainCamera/WeaponsManager" method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="PickUpDetection" to="MainCamera/WeaponsManager" method="_on_pick_up_detection_body_entered"]

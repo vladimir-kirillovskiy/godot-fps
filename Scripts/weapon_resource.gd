@@ -25,6 +25,9 @@ class_name Weapon_Resource
 @export var projectile_to_load: PackedScene
 @export var projectile_velocity: int
 
+@export var weapon_drop: PackedScene
+@export var can_be_dropped: bool
+
 
 
 

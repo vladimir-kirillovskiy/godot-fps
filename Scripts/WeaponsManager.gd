@@ -11,7 +11,7 @@ var debug_bullet = preload("res://Scenes/bullet_debug.tscn")
 
 var current_weapon = null
 var weapon_stack = [] # array of weapons currently held by the player
-var weapon_indicator = 0
+#var weapon_indicator = 0
 var next_weapon: String
 var weapon_list = {}
 
@@ -29,17 +29,21 @@ func _ready():
 	
 func _input(event):
 	if event.is_action_pressed("weapon_up"):
-		weapon_indicator = min(weapon_indicator+1, weapon_stack.size() - 1)
-		exit(weapon_stack[weapon_indicator])
+		var get_ref = weapon_stack.find(current_weapon.weapon_name)
+		get_ref = min(get_ref + 1, weapon_stack.size() - 1)
+		exit(weapon_stack[get_ref])
 		
 	if event.is_action_pressed("weapon_down"):
-		weapon_indicator = max(weapon_indicator-1, 0)
-		exit(weapon_stack[weapon_indicator])
+		var get_ref = weapon_stack.find(current_weapon.weapon_name)
+		get_ref = max(get_ref - 1, 0)
+		exit(weapon_stack[get_ref])
 		
 	if event.is_action_pressed("shoot"):
 		shot()
 	if event.is_action_pressed("reload"):
 		reload()
+	if event.is_action_pressed("drop_weapon"):
+		drop_weapon(current_weapon.weapon_name)
 
 func initialize(_start_weapons: Array):
 	# create a dictionary to refer to our weapons 
@@ -179,3 +183,65 @@ func launch_projectile(point: Vector3):
 
 func remove_exclusion(projectile_rid):
 	collision_exclusion.erase(projectile_rid)
+	
+
+func _on_pick_up_detection_body_entered(body):
+	if !body.pick_up_ready: return
+	print(body.name)
+	
+	var weapon_in_stack = weapon_stack.find(body.weapon_name, 0)
+	
+	if weapon_in_stack == -1 && body.pick_up_type == "weapon": #pick up
+		var get_ref = weapon_stack.find(current_weapon.weapon_name)
+		
+		weapon_stack.insert(get_ref, body.weapon_name)
+		
+		
+		# zero out ammo in the resource
+		weapon_list[body.weapon_name].current_ammo = body.current_ammo
+		weapon_list[body.weapon_name].reserve_ammo = body.reserve_ammo
+		
+		emit_signal("update_weapon_stack", weapon_stack)
+		exit(body.weapon_name)
+		body.queue_free()
+	else: #add ammo
+		
+		var remaining = add_ammo(body.weapon_name, body.current_ammo + body.reserve_ammo)
+		if remaining == 0:
+			body.queue_free()
+		
+		body.current_ammo = min(remaining, weapon_list[body.weapon_name].magazine)
+		body.reserve_ammo = max(remaining - body.current_ammo, 0)
+		
+func drop_weapon(_name: String):
+	if !weapon_list[_name].can_be_dropped || weapon_stack.size() == 1: return
+	
+	var weapon_ref = weapon_stack.find(_name, 0)
+	
+	if weapon_ref != -1:
+		weapon_stack.pop_at(weapon_ref)
+		emit_signal("update_weapon_stack", weapon_stack)
+		
+		var weapon_dropped = weapon_list[_name].weapon_drop.instantiate()
+		weapon_dropped.current_ammo = weapon_list[_name].current_ammo
+		weapon_dropped.reserve_ammo = weapon_list[_name].reserve_ammo
+		
+		weapon_dropped.set_global_transform(bullet_point.get_global_transform())
+		var world = get_tree().get_root().get_child(0)
+		world.add_child(weapon_dropped)
+		
+		var get_ref = weapon_stack.find(current_weapon.weapon_name)
+		get_ref = max(get_ref - 1, 0)
+		exit(weapon_stack[get_ref])
+
+
+func add_ammo(_weapon_name: String, ammo: int) -> int:
+	var _weapon = weapon_list[_weapon_name]
+	
+	var required = _weapon.max_ammo - _weapon.reserve_ammo
+	var remaining = max(ammo - required, 0)
+	
+	_weapon.reserve_ammo += min(ammo, required)
+	emit_signal("update_ammo", [current_weapon.current_ammo, current_weapon.reserve_ammo])
+	return remaining
+	

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=2 format=3 uid="uid://bfhkmjjh58la"]
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=3 format=3 uid="uid://bfhkmjjh58la"]
 
 [ext_resource type="Script" path="res://Scripts/weapon_resource.gd" id="1_thr5f"]
+[ext_resource type="PackedScene" uid="uid://0jox4q1oba1y" path="res://Scenes/spawnable_weapons/machinegun.tscn" id="2_405jm"]
 
 [resource]
 script = ExtResource("1_thr5f")
@@ -19,3 +20,5 @@ weapon_range = 2000
 damage = 1
 type = 1
 projectile_velocity = 0
+weapon_drop = ExtResource("2_405jm")
+can_be_dropped = true

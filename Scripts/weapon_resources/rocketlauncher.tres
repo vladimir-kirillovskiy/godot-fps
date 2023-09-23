@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=3 format=3 uid="uid://be1vyu7qf1v3q"]
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=4 format=3 uid="uid://be1vyu7qf1v3q"]
 
 [ext_resource type="PackedScene" uid="uid://n2a511ivuur3" path="res://Scenes/rocket.tscn" id="1_f68xg"]
 [ext_resource type="Script" path="res://Scripts/weapon_resource.gd" id="1_t0usq"]
+[ext_resource type="PackedScene" uid="uid://dwk08ldsl4gy3" path="res://Scenes/spawnable_weapons/rocketlauncher.tscn" id="3_ircou"]
 
 [resource]
 script = ExtResource("1_t0usq")
@@ -21,3 +22,5 @@ damage = 1
 type = 2
 projectile_to_load = ExtResource("1_f68xg")
 projectile_velocity = 50
+weapon_drop = ExtResource("3_ircou")
+can_be_dropped = true
